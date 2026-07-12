@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CHALLENGES.md",
+                "file": "LEARNED.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CHALLENGES"
+              "title": "LEARNED"
             }
           }
         ]
@@ -41,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -185,11 +185,26 @@
   },
   "active": "43a44cb64512b90f",
   "lastOpenFiles": [
-    "icon.svg",
-    "CHALLENGES.md",
+    "Scenes/Animal/Animal.gd-Vd0nNa",
+    "Scenes/Cup/Cup.tscn-8QnMCF",
+    "Scenes/Cup/Cup.tscn-wJxkEY",
+    "Scenes/Cup/Cup.tscn-q6cnem",
+    "Scenes/Cup/Cup.tscn-7so1j3",
+    "Scenes/Cup/Cup.tscn-NNWIN0",
+    "Scenes/Cup/Cup.tscn-htuscE",
+    "Scenes/Cup/Cup.tscn-Cu6kas",
+    "Scenes/Cup/Cup.gd-Byfq6N",
+    "Scenes/Cup/Cup.tscn-UfNWAE",
+    "Scenes/Cup/Cup.tscn-UTgA3H",
+    "Images/RegionOversizeRepeatable.png",
+    "Pasted image 20260702230753.png",
     "LEARNED.md",
+    "CHALLENGES.md",
+    "icon.svg",
+    "Images/RegionOversizeWithoutRepat.png",
+    "Pasted image 20260702230520.png",
+    "Pasted image 20260702230528.png",
     "README.md",
-    "Images/LabelDebugAnimalScene.png.import",
     "Images/LabelDebugAnimalScene.png"
   ]
 }

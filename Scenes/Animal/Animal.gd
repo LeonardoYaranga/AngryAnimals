@@ -6,6 +6,7 @@ extends RigidBody2D
 @onready var arrow: Sprite2D = $Arrow
 @onready var stretch_sound: AudioStreamPlayer2D = $StretchSound
 @onready var launch_sound: AudioStreamPlayer2D = $LaunchSound
+@onready var kick_sound: AudioStreamPlayer2D = $KickSound
 
 @export var DRAG_LIM_MAX: Vector2 = Vector2(0, 60)
 @export var DRAG_LIM_MIN: Vector2 = Vector2(-60, 0)
@@ -20,14 +21,14 @@ var _is_dragging: bool = false
 var _arrow_scale_x: float = 0.0
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("drag"):
+	if _is_dragging and event.is_action_released("drag"):
 		call_deferred("start_release")
 
 func _ready() -> void:
 	_start = position
 	_arrow_scale_x = arrow.scale.x
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var debug_string: String = ""
 	debug_string = "Freeze:%s\n Sleeping: %s\n Contacts Reported: %s\n" % [
 		freeze, is_sleeping(), str(get_contact_count())]
@@ -37,7 +38,7 @@ func _process(delta: float) -> void:
 	debug_string += "impulse length: %s\n" % calculate_impulse().length()
 	label.text = debug_string
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if _is_dragging and Input.is_action_pressed("drag"):
 		hadle_dragging()
 	
@@ -64,22 +65,32 @@ func hadle_dragging() -> void:
 	_dragged_vector = new_dragged_vector
 	position = _start + _dragged_vector
 	
-	
 func scale_arrow() -> void:
 	var imp_len: float = calculate_impulse().length()
 	var perc: float = clamp(imp_len / impulse_max, 0.0, 1.0)
 	arrow.scale.x = lerpf(_arrow_scale_x, _arrow_scale_x * 2, perc)
 	arrow.rotation = (_start - position).angle()
-	# arrow.rotation = _dragged_vector.angle() - PI
-	# arrow.scale.x = _dragged_vector.length() / arrow.texture.get_size().x
 
 func start_dragging() -> void:
 	_is_dragging = true
 	_drag_start = get_global_mouse_position()
 	arrow.show()
 
-
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("drag"):
 		input_event.disconnect(_on_input_event)
 		start_dragging()
+		
+func die() -> void:
+	queue_free()
+	SignalHub.emit_animal_died() 
+
+func _on_body_entered(body: Node) -> void:
+	if body is Cup :
+		if !kick_sound.is_playing() : kick_sound.play()
+
+func _on_sleeping_state_changed() -> void:
+	if sleeping:
+		for body in get_colliding_bodies():
+			if body is Cup : body.die()
+		die()

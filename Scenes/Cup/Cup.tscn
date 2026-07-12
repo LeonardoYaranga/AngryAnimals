@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://denkuhg358055"]
+
+[ext_resource type="Texture2D" uid="uid://d2pvu0p407n45" path="res://Assets/env/elementWood004.png" id="1_1tkc5"]
+[ext_resource type="Script" uid="uid://b0xyopraq44xm" path="res://Scenes/Cup/Cup.gd" id="1_jdgvp"]
+[ext_resource type="AudioStream" uid="uid://bnstv2euy7nhk" path="res://Assets/audio/vanish.wav" id="3_jdgvp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fc21d"]
+load_path = "res://.godot/imported/elementWood015.png-0ba19f10400c9303a1cb961dc1a0d40d.ctex"
+
+[sub_resource type="Animation" id="Animation_nfkcc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pieces:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_q4041"]
+resource_name = "vanish"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pieces:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.045,
+"start_offset": 0.035,
+"stream": ExtResource("3_jdgvp")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hc0i8"]
+_data = {
+&"RESET": SubResource("Animation_nfkcc"),
+&"vanish": SubResource("Animation_q4041")
+}
+
+[node name="Cup" type="StaticBody2D" unique_id=1932078130]
+script = ExtResource("1_jdgvp")
+
+[node name="Pieces" type="Node2D" parent="." unique_id=593281290]
+scale = Vector2(0.5, 0.5)
+
+[node name="Triangle" type="Sprite2D" parent="Pieces" unique_id=1426451574]
+position = Vector2(-73, -69)
+texture = ExtResource("1_1tkc5")
+
+[node name="Triangle2" type="Sprite2D" parent="Pieces" unique_id=1964929907]
+position = Vector2(73, -69)
+texture = ExtResource("1_1tkc5")
+flip_h = true
+
+[node name="HorizontalWood" type="Sprite2D" parent="Pieces" unique_id=1796605293]
+texture = SubResource("CompressedTexture2D_fc21d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=489169083]
+position = Vector2(-4.224983, -7.55695)
+scale = Vector2(5.681481, 3.5370367)
+polygon = PackedVector2Array(-8.584912, -12.565051, -8.760923, 6.660081, 10.248205, 6.9428034, 10.232559, -12.481205, 4.0878396, -2.6697628, -2.9525783, -2.9524853)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=912824818]
+libraries/ = SubResource("AnimationLibrary_hc0i8")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=872140050]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
