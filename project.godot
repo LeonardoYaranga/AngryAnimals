@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="AngryAnimals"
-run/main_scene="uid://cks684nwp21js"
+run/main_scene="uid://dwtd3gppj3ncn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SignalHub="*uid://xocmq7m4rlfw"
+GameManager="*uid://c1agpu08fb64p"
 
 [display]
 

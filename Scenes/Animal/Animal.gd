@@ -48,6 +48,7 @@ func start_release() -> void:
 	_is_dragging = false
 	apply_central_impulse(calculate_impulse())
 	arrow.hide()
+	SignalHub.emit_on_attempt_made()
 
 func calculate_impulse() -> Vector2:
 	return _dragged_vector * IMPULSE_MULT * -1
@@ -57,7 +58,7 @@ func hadle_dragging() -> void:
 	new_dragged_vector = new_dragged_vector.clamp(DRAG_LIM_MIN, DRAG_LIM_MAX)
 
 	var diff: Vector2 = new_dragged_vector - _dragged_vector
-	print("Diff length: %s" % diff.length())
+	#print("Diff length: %s" % diff.length())
 	if diff.length() > 0 && !stretch_sound.playing:
 		stretch_sound.play()
 
@@ -83,14 +84,14 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		
 func die() -> void:
 	queue_free()
-	SignalHub.emit_animal_died() 
+	SignalHub.emit_on_animal_died()
 
 func _on_body_entered(body: Node) -> void:
-	if body is Cup :
-		if !kick_sound.is_playing() : kick_sound.play()
+	if body is Cup:
+		if !kick_sound.is_playing(): kick_sound.play()
 
 func _on_sleeping_state_changed() -> void:
 	if sleeping:
 		for body in get_colliding_bodies():
-			if body is Cup : body.die()
+			if body is Cup: body.die()
 		die()

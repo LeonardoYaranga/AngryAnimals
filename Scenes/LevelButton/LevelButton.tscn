@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://4tij1vvjmvs"]
+
+[ext_resource type="Texture2D" uid="uid://bbmuewb6qb7ih" path="res://Assets/ui/panel_beige.png" id="1_145gk"]
+[ext_resource type="FontFile" uid="uid://de6l4ame7505i" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="2_3r2e7"]
+[ext_resource type="Script" uid="uid://b8g6qfh261i50" path="res://Scenes/LevelButton/LevelButton.gd" id="2_anpwf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_anpwf"]
+font = ExtResource("2_3r2e7")
+font_size = 40
+outline_size = 4
+outline_color = Color(0.0253638, 0.0253638, 0.025363795, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uqdhg"]
+font = ExtResource("2_3r2e7")
+font_size = 24
+outline_size = 4
+outline_color = Color(0.0253638, 0.0253638, 0.025363795, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="LevelButton" type="TextureButton" unique_id=1783888116]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_145gk")
+script = ExtResource("2_anpwf")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1682075752]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 16
+
+[node name="VB" type="VBoxContainer" parent="MarginContainer" unique_id=1097627750]
+layout_mode = 2
+
+[node name="LevelNumberLabel" type="Label" parent="MarginContainer/VB" unique_id=1503042591]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "99"
+label_settings = SubResource("LabelSettings_anpwf")
+
+[node name="LevelScoreLabel" type="Label" parent="MarginContainer/VB" unique_id=1511182621]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "99999"
+label_settings = SubResource("LabelSettings_uqdhg")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
