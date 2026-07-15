@@ -69,4 +69,18 @@ OJO: Al acceder en una funcion _phyisics_process a Input.is_action_just_released
 
 ## Inherit Scenes
 Una buena de manera de crear escenas parecidas es usar la herencia, en este caso se crea la escena LevelBase que tiene las cosas basicas que todas los niveles deberian tener y posteriormente en Scene>New inherit Scene podemos llegar a crear escenas iguales a las cuales le podemos agregar otras cosas que los diferencien, como mas obstaculos, mas enemigos, entre otras cosas.
-![[InheritScenes.png]]
+![[InheritScenes.png|697]]
+
+## Score Manager, load from file
+Para la persistencia se puede crear una clase en un script que herede de un "Resource", a esta le colocamos las variables que se requieran, en este caso un diccionario para guardar el nivel y si score. Incluso se puede colocar funciones para acceder a los valores de score y establecerlos si son un mejor puntaje que el anterior.
+res://Classes/LevelScoresResource.gd
+
+Luego en un Singleto o script global podemos controlar la carga y guardado del Recurso como Archivo, con funciones que ayudan  a que otras clases puedan acceder a los valores de los scores y para establecerlos.
+res://Globals/ScoreManager.gd
+Para acceder a los valores se lo hace a lo que se instancia un LeveButton
+res://Scenes/LevelButton/LevelButton.gd
+
+Y se establecer un valor al terminal un nivel en "func on_cup_destroyed() -> void:"
+cuando "if _current_cups >= _total_cups:"
+res://Scenes/GameUi/GameUi.gd
+![[MainMenuWithSavedScores.png]]

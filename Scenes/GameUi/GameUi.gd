@@ -10,6 +10,7 @@ var _total_attempts: int = -1
 @onready var music: AudioStreamPlayer = $Music
 @onready var attempts_number_label: Label = $MC/VBLevelInfo/HBAttempts/AttemptsNumberLabel
 @onready var press_escape_label: Label = $VBComplete/PressEscapeLabel
+@onready var level_number_label: Label = $MC/VBLevelInfo/HBLevel/LevelNumberLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _ready() -> void:
 	SignalHub.on_cup_destroyed.connect(on_cup_destroyed)
 	SignalHub.on_attempt_made.connect(on_attempt_made)
 	on_attempt_made()
+	level_number_label.text = str(ScoreManager.level_selected)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_released("ui_cancel"):
@@ -33,4 +35,5 @@ func on_cup_destroyed() -> void:
 	if _current_cups >= _total_cups:
 		vb_complete.show()
 		music.play()
+		ScoreManager.set_level_best(_total_attempts)
 		get_tree().paused = true

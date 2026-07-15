@@ -11,14 +11,12 @@
             "id": "43a44cb64512b90f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "LEARNED.md",
-                "mode": "source",
-                "source": false
+                "file": "Images/Level3UpdatedNewObstacleStoneWall.png"
               },
-              "icon": "lucide-file",
-              "title": "LEARNED"
+              "icon": "lucide-image",
+              "title": "Level3UpdatedNewObstacleStoneWall"
             }
           }
         ]
@@ -183,31 +181,30 @@
       "bases:Create new base": false
     }
   },
-  "active": "43a44cb64512b90f",
+  "active": "4bf3aad34947cdb1",
   "lastOpenFiles": [
-    "Scenes/Main/Main.tscn-4eMcv4",
-    "Scenes/Main/Main.tscn-UHct2s",
-    "Scenes/Main/Main.tscn-FkI4Qa",
-    "Scenes/Main/Main.tscn-uBwkVL",
-    "Scenes/Main/Main.tscn-KRBx2L",
-    "Scenes/Main/Main.tscn-LRdQFo",
-    "Scenes/Main/Main.tscn-P74QMM",
-    "project.godot-Q6srTJ",
-    "Scenes/Main/Main.tscn-K3B4iE",
-    "Scenes/Main/Main.tscn-uWSwaA",
-    "Scenes/GameUi/GameUi.gd-rxXNmQ",
-    "Images/InheritScenes.png",
+    "README.md",
+    "Pasted image 20260714195412.png",
+    "Images/Level3UpdatedNewObstacleStoneWall.png",
     "LEARNED.md",
+    "Scenes/LevelBase/Level2.tscn-BiEvU2",
+    "Scenes/LevelBase/Level3.tscn-qUe2ZX",
+    "Scenes/StoneWall/StoneWall.tscn-oky2e7",
+    "Scenes/StoneWall/StoneWall.tscn-UoqZMR",
+    "Scenes/StoneWall/StoneWall.tscn",
+    "Scenes/StoneWall/StoneWall.tscn-xtoMNW",
+    "Scenes/StoneWall",
+    "Scenes/Animal/Animal.tscn-iI8oBH",
+    "Scenes/Animal/Animal.tscn-j4ES4h",
+    "Scenes/Animal/Animal.tscn-W4k4pd",
     "CHALLENGES.md",
+    "Images/Level3.png",
+    "Images/MainMenuWithSavedScores.png",
+    "Pasted image 20260714193914.png",
+    "Images/InheritScenes.png",
     "icon.svg",
     "Images/MouseControlNodeProperties.png",
     "Images/InputTesting.png",
-    "README.md",
-    "Pasted image 20260713181214.png",
-    "Images/RegionOversizeRepeatable.png",
-    "Pasted image 20260702230753.png",
-    "Images/RegionOversizeWithoutRepat.png",
-    "Pasted image 20260702230520.png",
-    "Pasted image 20260702230528.png"
+    "Pasted image 20260713181214.png"
   ]
 }

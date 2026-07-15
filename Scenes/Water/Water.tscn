@@ -8,6 +8,7 @@
 distance = -5.0
 
 [node name="Water" type="Area2D" unique_id=2146762638]
+z_index = 10
 script = ExtResource("1_k5xie")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=345390064]

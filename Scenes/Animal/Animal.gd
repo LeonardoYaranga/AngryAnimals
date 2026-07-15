@@ -10,7 +10,7 @@ extends RigidBody2D
 
 @export var DRAG_LIM_MAX: Vector2 = Vector2(0, 60)
 @export var DRAG_LIM_MIN: Vector2 = Vector2(-60, 0)
-@export var IMPULSE_MULT: float = 10.0
+@export var IMPULSE_MULT: float = 20.0
 var impulse_max: float = 800
 
 
